@@ -5,14 +5,12 @@ import java.util.stream.LongStream;
 
 public class Simulation {
 	private long cycles;
-	private AtomicLong timesWon;
 	private AtomicLong timesSwitched;
 	private AtomicLong timesSwitchedAndWon;
 	private AtomicLong timesNotSwitchedAndWon;
 
 	public Simulation(long cycles) {
 		this.cycles = cycles;
-		timesWon = new AtomicLong();
 		timesSwitched = new AtomicLong();
 		timesSwitchedAndWon = new AtomicLong();
 		timesNotSwitchedAndWon = new AtomicLong();
@@ -31,11 +29,7 @@ public class Simulation {
 		ShowResult gameShowResult = new GameShow().play();
 
 		boolean hasWon = gameShowResult.hasWon();
-		
-		if (hasWon) {
-			timesWon.incrementAndGet();
-		}
-		
+
 		if (gameShowResult.hasSwitched()) {
 			timesSwitched.incrementAndGet();
 
